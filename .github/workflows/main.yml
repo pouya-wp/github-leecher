@@ -38,11 +38,11 @@ on:
           حداکثر حجم هر تکه (مگابایت)
         required: false
         type: choice
-        default: '500'
+        default: '95'
         options:
           - '25  (اینترنت ضعیف - فایل‌های کوچک)'
           - '50  (متوسط)'
-          - '500  (حداکثر - برای فایل‌های حجیم)'
+          - '95  (حداکثر - برای فایل‌های حجیم)'
       delete_old_archives:
         description: 'پاک کردن فایل‌های قبلی (در صورت تیک زدن، تمام آرشیوهای قدیمی حذف میشن)'
         required: false
@@ -81,7 +81,7 @@ jobs:
         id: parse
         run: |
           SIZE=$(echo "${{ github.event.inputs.split_size }}" | grep -oP '\d+')
-          echo "split_mb=${SIZE:-500}" >> $GITHUB_OUTPUT
+          echo "split_mb=${SIZE:-95}" >> $GITHUB_OUTPUT
 
           cat > urls.txt << URLEOF
           ${{ github.event.inputs.file_url_1 }}
